@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const users = require('../userStore');  // Certifique-se de que o caminho está correto
 
 const generateToken = (user) => {
-    return jwt.sign({ username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    return jwt.sign({ username: user.username, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 };
 
 const signup = async (req, res) => {
@@ -42,4 +42,5 @@ const protected = (req, res) => {
 };
 
 module.exports = { signup, login, protected };
+
 
